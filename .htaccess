@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "\.(sql|md|pem|key)$">
+    Require all denied
+</FilesMatch>
