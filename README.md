@@ -29,7 +29,9 @@ Aplikasi berbasis web untuk mengelola dokumen arsip secara digital, mulai dari p
 
 ## Fitur Utama
 
-- Login administrator
+- Landing page sebelum masuk ke halaman login
+- Login administrator menggunakan username dan private key RSA
+- Mode tampilan sesuai kunci: private key cocok menampilkan data terdekripsi, private key salah menampilkan data terenkripsi
 - Dashboard statistik arsip
 - Tambah arsip digital
 - Melihat detail arsip
@@ -150,13 +152,29 @@ Buka aplikasi melalui browser:
 http://localhost/sistem-arsip-kriptografi/
 ```
 
-Login menggunakan username dan password administrator yang telah dibuat.
+Halaman awal adalah landing page. Klik **Masuk sebagai admin** untuk menuju halaman login, lalu isi:
+
+- **Username** administrator yang telah dibuat.
+- **Private key** RSA (tempel isi `secure/private.pem` atau pilih file `.pem`).
+
+Private key hanya dipakai untuk pemeriksaan saat login dan tidak disimpan di server maupun session.
+
+### Perilaku Login Berdasarkan Private Key
+
+| Kondisi | Hasil |
+|---|---|
+| Private key cocok dengan `secure/public.pem` | Dashboard dan data arsip tampil dalam bentuk asli (terdekripsi). Semua fitur terbuka. |
+| Private key salah | Tetap masuk ke dashboard, tetapi data tampil dalam bentuk terenkripsi (ciphertext). Detail, tambah, edit, hapus, unduh, pencarian, filter, dan riwayat aktivitas dikunci. |
+
+Kecocokan kunci diperiksa dengan menguji enkripsi RSA-OAEP memakai public key sistem, kemudian membukanya dengan private key yang dimasukkan.
 
 ## Struktur Folder Penting
 
 ```text
 sistem-arsip-kriptografi/
 │
+├── index.php          (landing page)
+├── login.php          (login username + private key)
 ├── admin/
 │   ├── arsip.php
 │   ├── detail.php

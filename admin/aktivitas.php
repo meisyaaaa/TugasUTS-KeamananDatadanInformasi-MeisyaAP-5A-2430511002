@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/functions.php';
-require_login();
+require_unlocked();
 $rows=$pdo->query('SELECT a.aktivitas,a.created_at,ad.username FROM aktivitas a JOIN admins ad ON ad.id=a.admin_id ORDER BY a.id DESC LIMIT 200')->fetchAll();
 $page_title='Riwayat Aktivitas'; $active='aktivitas'; require __DIR__.'/../includes/header.php';
 ?>
