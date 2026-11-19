@@ -15,7 +15,7 @@ Aplikasi berbasis web untuk mengelola dokumen arsip secara digital, mulai dari p
 - **Kelas:** 5A
 - **Program Studi:** Teknik Informatika
 - **Mata Kuliah:** Keamanan Data dan Informasi
-- **Dosen Pengampu:** Arsil Adi Sunarto, M.Kom
+- **Dosen Pengampu:** Asril Adi Sunarto, M.Kom
 
 ## Teknologi yang Digunakan
 
